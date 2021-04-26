@@ -23,6 +23,7 @@ export class TrackerDataComponent implements OnInit {
 
 	getTrackerDataForTrackerId(){
 		this.showLoading = true;
+		this.markers = [];
 		this.trackerServ.getTrackerDataForTrackerId(this.trackerId).subscribe((res: any) => {
 			this.showLoading = false;
 			this.test = res.result;
