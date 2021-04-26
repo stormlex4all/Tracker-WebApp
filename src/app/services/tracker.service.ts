@@ -12,7 +12,8 @@ export class TrackerService {
     private http: HttpClient
   ) { }
 
-	API_URL = 'https://localhost:44375';
+	// API_URL = 'https://localhost:44375';
+	API_URL = 'https://trackerapi.netlify.app/';
 
 	getTrackerDataForTrackerId(trackerId: string){
 		return this.http.get(`${this.API_URL}/api/Tracker/${trackerId}`)
