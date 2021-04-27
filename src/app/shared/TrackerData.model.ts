@@ -36,4 +36,5 @@ export interface TrackerData{
         destination_lon: number;
         current_asset_position_lat: number;
         current_asset_position_lon: number;
+        eta: number;
 }

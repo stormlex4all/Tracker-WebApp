@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {CardModule} from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     FormsModule,
     ButtonModule,
     BrowserAnimationsModule,
+    CardModule,
     ProgressSpinnerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCZDC6DRFHUAHHC6p1OsiHSJmmb3PJttFI'

@@ -1,72 +1,75 @@
-<p-panel header="TSLTrackerTest">
-    <div>
-        <span class="p-input-icon-right">
-            <i *ngIf="showLoading == false" class="pi pi-search" (click)="getTrackerDataForTrackerId()"></i>
-            <i *ngIf="showLoading == true" class="pi pi-spin pi-spinner"></i>
-            <input type="text" pInputText [(ngModel)]="trackerId" placeholder="Search Tracker Id">
-            <!-- <i *ngIf="showLoading == true" class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>   -->
-        </span>
+<div class="p-grid">
+    <div class="p-col-4">
+        <p-divider layout="vertical">
+        </p-divider>
     </div>
-    <br/>
-    <div *ngIf="test != null && test != undefined">
-        <agm-map [latitude]='test.current_asset_position_lat' [longitude]='test.current_asset_position_lon'>
-            <agm-marker 
-                *ngFor="let m of markers; let i = index"
-                [latitude]="m.lat"
-                [longitude]="m.lng"
-                [label]="m.label"
-                [markerDraggable]="m.draggable">
-      
-                <agm-info-window>
-                <strong>InfoWindow content</strong>
-                </agm-info-window>
-                
-            </agm-marker>
-        </agm-map>
-    </div>
-
-    <p-divider align="center">
-    <span class="p-tag">Details</span>
-    </p-divider>
-
-    <div class="p-grid" *ngIf="test != null && test != undefined">
-        <div class="p-col-4">
-            <p-divider layout="vertical">
-            </p-divider>
-        </div>
-        <div class="p-col-4">
-            <h2>
-                {{test?.client_id}}  is en route
-            </h2>
-            <h3>
-                {{test?.asset_reg_no}}
-            </h3>
-            <span>
-                A
-                <i class="pi pi-circle-on"></i>
-                {{test?.start_position_name}} (START)
-            </span>
+    <div class="p-col-4">
+        <p-panel header="TSLTrackerTest">
+            <div>
+                <div class="p-col-12 p-md-12">
+                    <div class="p-inputgroup">
+                        <input type="text" pInputText [(ngModel)]="trackerId" placeholder="Input a Package tracking ID">
+                        <p-button icon="pi pi-search" [loading]="showLoading" (onClick)="getTrackerDataForTrackerId()"></p-button>
+                    </div>
+                </div>
+            </div>
             <br/>
-            <span>
-                 <i class="pi pi-ellipsis-v"></i>
-            <br/>
-                 <i class="pi pi-ellipsis-v"></i>
-            <br/>
-                 <i class="pi pi-ellipsis-v"></i>
-            <br/>
-                 <i class="pi pi-ellipsis-v"></i>
-            </span>
-            <br/>
-            <span>
-                C
-                <i class="pi pi-map-marker"></i>
-                {{test?.destination_name}} (DESTINATION)
-            </span>
+            <div *ngIf="test != null && test != undefined">
+                <agm-map [latitude]='test.current_asset_position_lat' [longitude]='test.current_asset_position_lon'>
+                    <agm-marker 
+                        *ngFor="let m of markers; let i = index"
+                        [latitude]="m.lat"
+                        [longitude]="m.lng"
+                        [label]="m.label"
+                        [markerDraggable]="m.draggable">
             
-        </div>
-        <div class="p-col-4">
-            <p-divider layout="vertical">
+                        <agm-info-window>
+                        <strong>InfoWindow content</strong>
+                        </agm-info-window>
+                        
+                    </agm-marker>
+                </agm-map>
+            </div>
+
+            <p-divider align="center">
+            <span class="p-tag">Details</span>
             </p-divider>
-        </div>
+
+            <div *ngIf="test != null && test != undefined">
+                <p-card>
+                    <h2>
+                        {{test?.client_id}}  is en route. ETA: {{test.trip_eta }}
+                    </h2>
+                    <h3>
+                        Vehicle Reg. No.: {{test?.asset_reg_no}}
+                    </h3>
+                    <span>
+                        A
+                        <i class="pi pi-circle-on"></i>
+                        {{test?.start_position_name}} (START)
+                    </span>
+                    <br/>
+                    <span>
+                        <i class="pi pi-ellipsis-v"></i>
+                    <br/>
+                        <i class="pi pi-ellipsis-v"></i>
+                    <br/>
+                        <i class="pi pi-ellipsis-v"></i>
+                    <br/>
+                        <i class="pi pi-ellipsis-v"></i>
+                    </span>
+                    <br/>
+                    <span>
+                        C
+                        <i class="pi pi-map-marker"></i>
+                        {{test?.destination_name}} (DESTINATION)
+                    </span>
+                </p-card>
+            </div>
+        </p-panel>
     </div>
-</p-panel>
+    <div class="p-col-4">
+        <p-divider layout="vertical">
+        </p-divider>
+    </div>
+</div>
